@@ -1,0 +1,19 @@
+# Dependencies
+node_modules
+backend/.gradle
+backend/build
+
+# Build outputs
+dist
+build
+coverage
+*.log
+
+# app specific
+app/.expo
+app/.expo-shared
+app/web-build
+
+# IDE
+.idea
+.vscode

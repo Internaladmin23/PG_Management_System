@@ -1,0 +1,27 @@
+{
+  "name": "pg-management",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "backend:build": "cd backend && ./gradlew build",
+    "backend:test": "cd backend && ./gradlew test",
+    "backend:run": "cd backend && ./gradlew bootRun",
+    "app:install": "cd app && npm install",
+    "app:start": "cd app && npm start",
+    "app:test": "cd app && npm test",
+    "app:lint": "cd app && npm run lint",
+    "lint": "npm run app:lint",
+    "test": "npm run backend:test && npm run app:test"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.6.1",
+    "@commitlint/config-conventional": "^18.6.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1"
+  },
+  "workspaces": [
+    "app"
+  ]
+}
