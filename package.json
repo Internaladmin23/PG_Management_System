@@ -7,7 +7,7 @@
     "backend:build": "cd backend && ./gradlew build",
     "backend:test": "cd backend && ./gradlew test",
     "backend:run": "cd backend && ./gradlew bootRun",
-    "app:install": "cd app && npm install",
+    "app:install": "npm install -w app",
     "app:start": "cd app && npm start",
     "app:test": "cd app && npm test",
     "app:lint": "cd app && npm run lint",

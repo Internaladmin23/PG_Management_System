@@ -1,16 +1,16 @@
-name: Backend CI
+name: Server CI
 
 on:
   push:
     branches: [main, develop]
     paths:
-      - 'backend/**'
-      - '.github/workflows/backend-ci.yml'
+      - 'server/**'
+      - '.github/workflows/server-ci.yml'
   pull_request:
     branches: [main, develop]
     paths:
-      - 'backend/**'
-      - '.github/workflows/backend-ci.yml'
+      - 'server/**'
+      - '.github/workflows/server-ci.yml'
 
 jobs:
   build:
@@ -43,16 +43,16 @@ jobs:
           cache: 'gradle'
 
       - name: Grant execute permission for gradlew
-        run: chmod +x backend/gradlew
+        run: chmod +x server/gradlew
 
       - name: Check code style with Checkstyle
         run: |
-          cd backend
+          cd server
           ./gradlew checkstyleMain checkstyleTest
 
       - name: Run tests
         run: |
-          cd backend
+          cd server
           ./gradlew test --no-daemon
         env:
           SPRING_PROFILES_ACTIVE: test
@@ -62,26 +62,26 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          cd backend
+          cd server
           ./gradlew build -x test --no-daemon
 
       - name: Generate test coverage report
         run: |
-          cd backend
+          cd server
           ./gradlew jacocoTestReport
 
       - name: Upload test coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          files: ./backend/build/reports/jacoco/test/jacocoTestReport.xml
-          flags: backend
+          files: ./server/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: server
 
       - name: Archive build artifacts
         uses: actions/upload-artifact@v4
         if: success()
         with:
-          name: backend-jar
-          path: backend/build/libs/*.jar
+          name: server-jar
+          path: server/build/libs/*.jar
           retention-days: 7
 
       - name: Archive test results
@@ -89,5 +89,5 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: backend/build/test-results/
+          path: server/build/test-results/
           retention-days: 7
