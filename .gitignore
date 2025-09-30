@@ -58,7 +58,7 @@ junit/
 dist/
 build/
 target/
-
+node_modules/
 # Temporary files
 tmp/
 temp/
