@@ -50,7 +50,7 @@ dependencies {
 
 checkstyle {
     toolVersion = "10.12.3" // match your Gradle version
-    config = resources.text.fromFile("${rootDir}/config/checkstyle/checkstyle.xml")
+    config = resources.text.fromFile("${rootDir}/server/config/checkstyle/checkstyle.xml")
 }
 
 
