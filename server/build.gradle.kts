@@ -1,5 +1,6 @@
 plugins {
 	java
+    checkstyle
 	id("org.springframework.boot") version "3.5.6"
 	id("io.spring.dependency-management") version "1.1.7"
 	kotlin("jvm") version "1.9.10" apply false // If using Kotlin
@@ -7,6 +8,7 @@ plugins {
 	id("org.openapi.generator") version "7.16.0" // generate TS clients if desired
 	id("jacoco")
 	id("com.github.spotbugs") version "5.0.13"
+
 }
 
 group = "com.pg-management"
