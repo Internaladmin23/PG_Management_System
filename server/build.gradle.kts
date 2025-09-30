@@ -48,6 +48,12 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+checkstyle {
+    toolVersion = "10.12.3" // match your Gradle version
+    config = resources.text.fromFile("${rootDir}/config/checkstyle/checkstyle.xml")
+}
+
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
