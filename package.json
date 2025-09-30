@@ -9,7 +9,7 @@
     "backend:run": "cd backend && ./gradlew bootRun",
     "app:install": "npm install -w app",
     "app:start": "cd app && npm start",
-    "app:test": "cd app && npm test",
+    "app:test": "NODE_PATH=node_modules jest -w app",
     "app:lint": "cd app && npm run lint",
     "lint": "npm run app:lint",
     "test": "npm run backend:test && npm run app:test"
