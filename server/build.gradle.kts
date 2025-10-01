@@ -15,11 +15,6 @@ group = "com.pg-management"
 version = "0.0.1-SNAPSHOT"
 description = "PG management application"
 
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
-}
 
 repositories {
 	mavenCentral()
@@ -35,6 +30,13 @@ jacoco {
   toolVersion = "0.8.10"
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -49,14 +51,27 @@ dependencies {
 }
 
 checkstyle {
-    toolVersion = "10.12.3" // match your Gradle version
-    config = resources.text.fromFile("${rootDir}/server/config/checkstyle/checkstyle.xml")
+    toolVersion = "10.12.3"
+    config = resources.text.fromFile("${rootDir}/config/checkstyle/checkstyle.xml")
 }
 
 
 tasks.withType<Test> {
-	useJUnitPlatform()
+    // Skip tests if there are no compiled test classes
+    onlyIf {
+        val javaTestClasses = fileTree("${buildDir}/classes/java/test") {
+            include("**/*.class")
+        }
+        val kotlinTestClasses = fileTree("${buildDir}/classes/kotlin/test") {
+            include("**/*.class")
+        }
+        !javaTestClasses.isEmpty || !kotlinTestClasses.isEmpty
+    }
+
+    useJUnitPlatform() // Ensure JUnit 5 is used
 }
+
+
 
 
 

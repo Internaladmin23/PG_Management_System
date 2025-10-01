@@ -4,10 +4,15 @@
     "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
 <module name="Checker">
+
+    <!-- Global rule -->
+    <module name="LineLength">
+        <property name="max" value="120"/>
+    </module>
+
+    <!-- TreeWalker rules -->
     <module name="TreeWalker">
-        <module name="LineLength">
-            <property name="max" value="120"/>
-        </module>
         <module name="UnusedImports"/>
     </module>
+
 </module>
