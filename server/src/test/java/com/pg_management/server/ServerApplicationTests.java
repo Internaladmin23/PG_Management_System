@@ -6,9 +6,13 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 class ServerApplicationTests {
 
-  @Test
-  void contextLoads() {}
+    @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+    static class TestConfiguration {
+    }
+
+    @Test
+    void contextLoads() {}
 }
+
