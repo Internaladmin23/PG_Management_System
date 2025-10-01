@@ -8,11 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class ServerApplicationTests {
 
-    @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-    static class TestConfiguration {
-    }
+  @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+  static class TestConfiguration {}
 
-    @Test
-    void contextLoads() {}
+  @Test
+  void contextLoads() {}
 }
-
